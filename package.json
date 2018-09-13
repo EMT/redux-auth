@@ -1,0 +1,41 @@
+{
+  "name": "@fieldwork/redux-auth",
+  "version": "1.0.0",
+  "description": "Auth management actions and reducer for Redux and React.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm run clean && babel src -d dist --ignore **/*.test.js,**/__snapshots__",
+    "clean": "rm -rf ./dist",
+    "eslint": "eslint ./ --fix",
+    "flow": "flow",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "Fieldwork",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@fieldwork/eslint-config-fieldwork": "^1.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.5.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "flow-bin": "^0.80.0",
+    "jest": "^23.6.0",
+    "react": "^16.5.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3",
+    "react-redux": "^5",
+    "redux": "^4.0.0"
+  }
+}

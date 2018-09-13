@@ -1,0 +1,14 @@
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "targets": {
+                "browsers": ["last 2 versions"],
+            }
+        }],
+        "@babel/preset-flow",
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+    ],
+}
