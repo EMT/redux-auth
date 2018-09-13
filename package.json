@@ -2,6 +2,10 @@
   "name": "@fieldwork/redux-auth",
   "version": "1.0.1",
   "description": "Auth management actions and reducer for Redux and React.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EMT/redux-auth"
+  },
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run clean && babel src -d dist --ignore **/*.test.js,**/__snapshots__",
