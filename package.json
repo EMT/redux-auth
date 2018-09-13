@@ -1,6 +1,6 @@
 {
   "name": "@fieldwork/redux-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Auth management actions and reducer for Redux and React.",
   "main": "dist/index.js",
   "scripts": {
