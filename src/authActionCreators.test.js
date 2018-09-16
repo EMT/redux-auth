@@ -28,8 +28,8 @@ describe( 'actions', () => {
         const expectedAction = {
             type: AUTH_SET_SUCCEEDED,
             payload: {
-                id: id,
-                user: user,
+                id,
+                user,
             },
         }
 
