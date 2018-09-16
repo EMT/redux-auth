@@ -1,27 +1,18 @@
 // @flow
 import {
-    AUTH_SET_ID,
-    AUTH_SET_USER,
     AUTH_SET_WAITING,
-    AUTH_SET_DONE,
     AUTH_SET_FAILED,
     AUTH_SET_SUCCEEDED,
 } from './authActions'
 
 import type {
-    TypeAuthSetId,
-    TypeAuthSetUser,
     TypeAuthSetWaiting,
-    TypeAuthSetDone,
     TypeAuthSetFailed,
     TypeAuthSetSucceeded,
 } from './authActions'
 
 type TypeAuthAction =
-    TypeAuthSetId |
-    TypeAuthSetUser |
     TypeAuthSetWaiting |
-    TypeAuthSetDone |
     TypeAuthSetFailed |
     TypeAuthSetSucceeded
 
@@ -45,21 +36,13 @@ export const initialState = {
 
 const authReducer = ( state: TypeState = initialState, action: TypeAuthAction ) => {
     switch ( action.type ) {
-        case AUTH_SET_ID:
-            return { ...state, user: state.user, id: action.payload }
-
-        case AUTH_SET_USER:
-            return { ...state, user: action.payload }
-
         case AUTH_SET_WAITING:
             return { ...state, isWaiting: true, isDone: false }
 
-        case AUTH_SET_DONE:
-            return { ...state, isWaiting: false, isDone: true }
-
         case AUTH_SET_FAILED:
             return {
-                ...state,
+                user: {},
+                id: null,
                 isWaiting: false,
                 isDone: true,
                 hasFailed: true,
@@ -68,7 +51,8 @@ const authReducer = ( state: TypeState = initialState, action: TypeAuthAction ) 
 
         case AUTH_SET_SUCCEEDED:
             return {
-                ...state,
+                user: action.payload.user || {},
+                id: typeof action.payload.id === 'undefined' ? null : action.payload.id,
                 isWaiting: false,
                 isDone: true,
                 hasFailed: false,

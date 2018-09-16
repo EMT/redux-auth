@@ -1,66 +1,70 @@
 import authReducer, { initialState } from './authReducer'
 import authActionCreators from './authActionCreators'
 
-describe( 'actions', () => {
-    test( 'should set the auth user ID', () => {
-        expect( authReducer( [], authActionCreators.authSetId( 123 ) ) )
-            .toEqual( { id: 123 } )
+const succeededState = {
+    ...initialState,
+    isWaiting: false,
+    isDone: true,
+    hasFailed: false,
+    hasSucceeded: true,
+}
 
-        expect( authReducer( [], authActionCreators.authSetId( null ) ) )
-            .toEqual( { id: null } )
+const failedState = {
+    ...initialState,
+    isWaiting: false,
+    isDone: true,
+    hasFailed: true,
+    hasSucceeded: false,
+}
 
-        expect( authReducer( [], authActionCreators.authSetId( 'stringId' ) ) )
-            .toEqual( { id: 'stringId' } )
+describe( 'reducers', () => {
+    test( 'should return initial state', () => {
+        expect( authReducer( undefined, {} ) )
+            .toEqual( initialState )
     } )
 
-    test( 'should set the auth user object', () => {
-        const user = { id: 123, email: 'test@example.com', name: 'Test User' }
-        expect( authReducer( [], authActionCreators.authSetUser( user ) ) )
-            .toEqual( { user } )
-
-        const user2 = { id: 1234, email: 'test2@example.com', name: 'Test User 2' }
-        expect( authReducer( [], authActionCreators.authSetUser( user2 ) ) )
-            .toEqual( { user: user2 } )
-    } )
-
-    test( 'should set auth waiting', () => {
-        expect( authReducer( [], authActionCreators.authSetWaiting() ) )
+    test( 'AUTH_SET_WAITING should set auth waiting', () => {
+        expect( authReducer( initialState, authActionCreators.authSetWaiting() ) )
             .toEqual( {
+                ...initialState,
                 isWaiting: true,
                 isDone: false,
             } )
     } )
 
-    test( 'should set auth done', () => {
-        expect( authReducer( [], authActionCreators.authSetDone() ) )
-            .toEqual( {
-                isWaiting: false,
-                isDone: true,
-            } )
+    test( 'AUTH_SET_SUCCEEDED should set the auth user ID', () => {
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded( 123 ) ) )
+            .toEqual( { ...succeededState, id: 123 } )
+
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded( null ) ) )
+            .toEqual( { ...succeededState, id: null } )
+
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded( 'stringId' ) ) )
+            .toEqual( { ...succeededState, id: 'stringId' } )
     } )
 
-    test( 'should set auth failed', () => {
+    test( 'AUTH_SET_SUCCEEDED should set the auth user object', () => {
+        const user = { id: 123, email: 'test@example.com', name: 'Test User' }
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded( 123, user ) ) )
+            .toEqual( { ...succeededState, id: 123, user } )
+
+        const user2 = { id: 1234, email: 'test2@example.com', name: 'Test User 2' }
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded( 123, user2 ) ) )
+            .toEqual( { ...succeededState, id: 123, user: user2 } )
+    } )
+
+    test( 'AUTH_SET_SUCCEEDED should set auth succeeded', () => {
+        expect( authReducer( initialState, authActionCreators.authSetSucceeded() ) )
+            .toEqual( succeededState )
+    } )
+
+    test( 'AUTH_SET_FAILED should unset the auth user ID and auth user object', () => {
         expect( authReducer( [], authActionCreators.authSetFailed() ) )
-            .toEqual( {
-                isWaiting: false,
-                isDone: true,
-                hasFailed: true,
-                hasSucceeded: false,
-            } )
+            .toEqual( { ...failedState, id: null, user: {} } )
     } )
 
-    test( 'should set auth succeeded', () => {
-        expect( authReducer( [], authActionCreators.authSetSucceeded() ) )
-            .toEqual( {
-                isWaiting: false,
-                isDone: true,
-                hasFailed: false,
-                hasSucceeded: true,
-            } )
-    } )
-
-    test( 'should return initial state', () => {
-        expect( authReducer( undefined, {} ) )
-            .toEqual( initialState )
+    test( 'AUTH_SET_FAILED should set auth failed', () => {
+        expect( authReducer( [], authActionCreators.authSetFailed() ) )
+            .toEqual( failedState )
     } )
 } )

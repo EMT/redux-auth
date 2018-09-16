@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1536706180509" clover="3.2.0">
-  <project timestamp="1536706180509" name="All files">
-    <metrics statements="23" coveredstatements="23" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7" elements="38" coveredelements="38" complexity="0" loc="23" ncloc="23" packages="1" files="3" classes="3">
+<coverage generated="1537123603548" clover="3.2.0">
+  <project timestamp="1537123603548" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="9" coveredconditionals="9" methods="6" coveredmethods="6" elements="32" coveredelements="32" complexity="0" loc="17" ncloc="17" packages="1" files="4" classes="4">
       <file name="authActionCreators.js" path="/Users/andy/tools/redux-auth/src/authActionCreators.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
       </file>
       <file name="authActions.js" path="/Users/andy/tools/redux-auth/src/authActions.js">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
       </file>
       <file name="authReducer.js" path="/Users/andy/tools/redux-auth/src/authReducer.js">
-        <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="46" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="10" type="cond" truecount="7" falsecount="0"/>
-        <line num="49" count="3" type="stmt"/>
-        <line num="52" count="2" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="37" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="13" type="cond" truecount="4" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="53" count="6" type="stmt"/>
+        <line num="63" count="4" type="stmt"/>
+      </file>
+      <file name="withAuth.js" path="/Users/andy/tools/redux-auth/src/withAuth.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
       </file>
     </metrics>
   </project>
