@@ -38,17 +38,17 @@ connect( mapStateToProps, authActions )( MyComponent )
 A component connected using `withAuth` has the following actions available as props:
 
 ```
-authSetId( id: number | string )
-authSetUser( user: {} )
 authSetWaiting()
-authSetDone()
 authSetFailed()
-authSetSucceeded()
+authSetSucceeded( {
+    id: null | number | string,
+    user: { [key: string]: any },
+} )
 ```
 
 ### `auth` Prop
 
-A component connected using `withAuth` has an `auth` props containing:
+A component connected using `withAuth` has an `auth` prop containing the following state:
 
 ```
 {
@@ -58,5 +58,63 @@ A component connected using `withAuth` has an `auth` props containing:
     isDone: boolean,
     hasFailed: null | boolean,
     hasSucceeded: null | boolean,
+}
+```
+
+Default state:
+
+```
+{
+    id: null,
+    user: {},
+    isWaiting: null,
+    isDone: false,
+    hasFailed: null,
+    hasSucceeded: null,
+}
+```
+
+Example states:
+
+```
+authSetWaiting()
+
+{
+    ...currentState,
+    isWaiting: true,
+    isDone: false,
+}
+
+authSetFailed()
+
+{
+    user: {},
+    id: null,
+    isWaiting: false,
+    isDone: true,
+    hasFailed: true,
+    hasSucceeded: false,
+}
+
+authSetSucceeded( {
+    id: 123,
+    user: {
+        id: 123,
+        firstName: 'Bob',
+        email: 'bob@example.com',
+    }
+} )
+
+{
+    user: {
+        id: 123,
+        firstName: 'Bob',
+        email: 'bob@example.com',
+    },
+    id: 123,
+    isWaiting: false,
+    isDone: true,
+    hasFailed: false,
+    hasSucceeded: true,
 }
 ```
