@@ -16,7 +16,10 @@ const authActionCreators = {
 
     authSetSucceeded: ( id: null | number | string, user: { [key: string]: any } ) => ( {
         type: AUTH_SET_SUCCEEDED,
-        payload: { id, user },
+        payload: {
+            id: typeof id === 'undefined' ? null : id,
+            user: typeof user === 'undefined' ? {} : user,
+        },
     } ),
 }
 

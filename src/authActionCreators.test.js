@@ -27,9 +27,24 @@ describe( 'actions', () => {
         const user = { id: 123, email: 'test@example.com', name: 'Test User' }
         const expectedAction = {
             type: AUTH_SET_SUCCEEDED,
-            payload: { id, user },
+            payload: {
+                id: id,
+                user: user,
+            },
         }
 
         expect( authActionCreators.authSetSucceeded( id, user ) ).toEqual( expectedAction )
+    } )
+
+    test( 'AUTH_SET_SUCCEEDED should not require id or user properties', () => {
+        const expectedAction = {
+            type: AUTH_SET_SUCCEEDED,
+            payload: {
+                id: null,
+                user: {},
+            },
+        }
+
+        expect( authActionCreators.authSetSucceeded() ).toEqual( expectedAction )
     } )
 } )
